@@ -4,8 +4,15 @@
 package Mood.Analyser;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 
 public class MoodAnalyserTest {
-    
+    @Test
+    public void TestMoodAnalyser() {
+    	MoodAnalyser moodAnalyser = new MoodAnalyser();
+    	
+    	String mood = moodAnalyser.MoodAnalyse("This is a a happy message");
+		Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
+    }
 }
