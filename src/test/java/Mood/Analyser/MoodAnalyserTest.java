@@ -16,10 +16,25 @@ public class MoodAnalyserTest {
 		Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
     }
     @Test
-    public void TestMoodAnalyser2() throws Exception {
-    	MoodAnalyser moodAnalyser = new MoodAnalyser();
-    	
-    	String mood = moodAnalyser.MoodAnalyse(null);
-		Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
+    public void TestMoodAnalyser2() throws MoodAnalyserException {
+    	try {
+    		MoodAnalyser moodAnalyser = new MoodAnalyser();
+        	
+        	String mood = moodAnalyser.MoodAnalyse("");
+    	}
+		catch(MoodAnalyserException e) {
+			Assert.assertEquals(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, e.type);
+		}
+    }
+    @Test
+    public void TestMoodAnalyser3() throws MoodAnalyserException {
+    	try {
+    		MoodAnalyser moodAnalyser = new MoodAnalyser();
+        	
+        	String mood = moodAnalyser.MoodAnalyse(null);
+    	}
+		catch(MoodAnalyserException e) {
+			Assert.assertEquals(MoodAnalyserException.ExceptionType.ENTERED_NULL, e.type);
+		}
     }
 }

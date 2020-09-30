@@ -4,8 +4,11 @@
 package Mood.Analyser;
 
 public class MoodAnalyser {
-    public String MoodAnalyse(String message) {
+    public String MoodAnalyse(String message) throws MoodAnalyserException {
     	try {
+    		if(message.length() == 0) {
+    			throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "Please give a proper input");
+    		}
     		if(message.contains("happy")) {
         		return "HAPPY";
         	}
@@ -14,8 +17,7 @@ public class MoodAnalyser {
         	}
     	}
     	catch(NullPointerException e) {
-    		System.out.println("Please give a proper input");
-    		return "HAPPY";
+    		throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_NULL, "Please give a proper input"); 
     	}
     }
 }
