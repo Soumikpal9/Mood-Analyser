@@ -4,5 +4,18 @@
 package Mood.Analyser;
 
 public class MoodAnalyser {
-    
+	public String MoodAnalyse(String message) {
+    	try {
+    		if(message.contains("happy")) {
+        		return "HAPPY";
+        	}
+        	else {
+        		return "SAD";
+        	}
+    	}
+    	catch(NullPointerException e) {
+    		System.out.println("Please give a proper input");
+    		return "HAPPY";
+    	}
+    }
 }

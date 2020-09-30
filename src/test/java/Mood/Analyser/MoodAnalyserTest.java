@@ -3,9 +3,23 @@
  */
 package Mood.Analyser;
 
+import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.hamcrest.CoreMatchers;
 
 public class MoodAnalyserTest {
-    
+	@Test
+    public void TestMoodAnalyser1() throws Exception {
+    	MoodAnalyser moodAnalyser = new MoodAnalyser();
+    	
+    	String mood = moodAnalyser.MoodAnalyse("This is a a happy message");
+		Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
+    }
+	@Test
+    public void TestMoodAnalyser2() throws Exception {
+    	MoodAnalyser moodAnalyser = new MoodAnalyser();
+    	
+    	String mood = moodAnalyser.MoodAnalyse(null);
+		Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
+    }
 }
